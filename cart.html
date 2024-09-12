@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .cart-container {
+            max-width: 900px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            background-color: #fafafa;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            transition: background-color 0.3s;
+        }
+        .cart-item:hover {
+            background-color: #f0f0f0;
+        }
+        .cart-item img {
+            width: 120px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+        .cart-item-info {
+            flex: 1;
+        }
+        .cart-item h3 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .cart-item p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .remove-button {
+            background-color: #d9534f;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s;
+        }
+        .remove-button:hover {
+            background-color: #c9302c;
+        }
+        .total-price {
+            font-size: 1.4em;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+        }
+        .checkout-button {
+            display: block;
+            width: 95%;
+            padding: 15px;
+            background-color: #724348;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            margin: 0 auto;
+            transition: background-color 0.3s;
+        }
+        .checkout-button:hover {
+            background-color: #31b0d5;
+        }
+    </style>
+</head>
+<body>
+    <div class="cart-container">
+        <h1>Your Cart</h1>
+        <div id="cartItems"></div>
+        <div class="total-price" id="totalPrice">Total: Rs. 0/-</div>
+        <a href="payment.html" class="checkout-button">Proceed to Checkout</a>
+    </div>
+
+    <script>
+        function displayCart() {
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            let cartContainer = document.getElementById('cartItems');
+            let totalPrice = 0;
+
+            cartContainer.innerHTML = '';
+            cartItems.forEach((item, index) => {
+                cartContainer.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.title} Cover">
+                        <div class="cart-item-info">
+                            <h3>${item.title}</h3>
+                            <p>Author: ${item.author}</p>
+                            <p>Price: Rs. ${item.price}/-</p>
+                        </div>
+                        <button class="remove-button" onclick="removeItem(${index})">Remove</button>
+                    </div>
+                `;
+                totalPrice += item.price;
+            });
+
+            document.getElementById('totalPrice').innerText = `Total: Rs. ${totalPrice}/-`;
+        }
+
+        function removeItem(index) {
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            cartItems.splice(index, 1);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            displayCart();
+        }
+
+        displayCart();
+    </script>
+</body>
+</html>

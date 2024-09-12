@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Login</title>
+</head>
+<body>
+  
+    <header>
+        <div class="logo"><a href="home page.html">LitReads</a></div>
+        <nav>
+            <ul>
+                <li><a href="home page.html">Home</a></li>
+                <li><a href="product.html">Product</a></li>
+                <li><a href="aboutus.html">About us</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+                <li><a href="registration.html">Register</a></li>
+            </ul>
+        </nav>
+        <div class="user-options">
+            
+            <a href="cart.html" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i> Cart
+            </a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="login-container">
+            <h2><center>Login</center></h2>
+            <form action="home page.html">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <input type="submit" value="Login">
+                <p>Don't have an account? <a href="registration.html">Register</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+
+header {
+    background-color: #6d3b3b;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    padding-top: 1px;
+}
+
+.login-container {
+    width: 600px;
+    background-color: #fff;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo a {
+    text-decoration: none;
+    color: #fff;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav ul li {
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: rgb(255, 254, 254);
+    text-decoration: none;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+    width: 100%;
+    height: 40px;
+    background-color: #823e46;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+
+.user-options a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.cart-icon {
+    display: flex;
+    align-items: center;
+}
+
+.cart-icon i {
+    margin-right: 5px; 
+    font-size: 18px;   
+}
+
+@media screen and (max-width: 768px) {
+    .login-container {
+        width: 80%; 
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .login-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    input[type="text"], input[type="password"] {
+        height: 35px;
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    input[type="submit"] {
+        height: 35px;
+        font-size: 0.9rem;
+    }
+}
+</style>
